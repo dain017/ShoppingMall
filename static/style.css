@@ -19,6 +19,11 @@ body {
     color: #fff;
 }
 
+.header > * {
+    width: 300px;
+    display:flex;
+}
+
 .title {
     font-weight: bold;
     font-size: 24px;
@@ -35,6 +40,7 @@ body {
     cursor: pointer;
     font-weight: bold;
     transition: background-color 0.3s, color 0.3s;
+    margin-left: 10px;
 }
 
 .login-btn:hover {

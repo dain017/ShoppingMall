@@ -28,8 +28,15 @@ def search():
         text("SELECT prod_id FROM product WHERE prod_name LIKE :prod"),
         {"prod": f"%{prod}%"}   # 여기서 %를 붙여줌
     ).fetchall()
-
     return redirect(f'/product/{results[0][0]}')
+
+@app.route('/login')
+def login():
+    return render_template('login.html')
+
+@app.route('/info')
+def info():
+    return render_template('info.html')
 
 
 @app.route('/product/<string:prod>')

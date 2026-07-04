@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block title %}내 정보{% endblock %}
+
+{% block content %}
+<h2>내 정보</h2>
+<p>아이디: {{ user.username }}</p>
+<p>이메일: {{ user.email }}</p>
+<p>가입일: {{ user.created_at }}</p>
+{% endblock %}
