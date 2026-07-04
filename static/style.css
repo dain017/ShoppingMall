@@ -132,13 +132,14 @@ li {
     border-radius: 6px;
     font-weight: bold;
     transition: background-color 0.3s;
+    width: 600px;
+    margin: 10px auto;
 }
 
 .product-btn:hover {
     background-color: #0d47a1;
 }
 
-/* 상품 상세 */
 .product-detail {
     max-width: 900px;
     margin: 40px auto;
@@ -193,18 +194,6 @@ li {
     margin-left: 8px;
 }
 
-.options {
-    list-style: none;
-    padding: 0;
-    margin-bottom: 20px;
-}
-
-.options li {
-    margin-bottom: 6px;
-    font-size: 14px;
-    color: #555;
-}
-
 .buy-btn {
     display: inline-block;
     background: #4285F4;
@@ -220,7 +209,6 @@ li {
     background-color: #0d47a1;
 }
 
-/* 댓글 영역 */
 .comments {
     max-width: 900px;
     margin: 30px auto;
