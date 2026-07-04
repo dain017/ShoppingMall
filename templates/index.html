@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block title %}메인 페이지{% endblock %}
+
+{% block content %}
+<div>
+    <h2>추천 상품</h2>
+    <form action="/product">
+        {% for product in products %}
+            <button class="product-btn" name="result" type="submit" value="{{ product.prod_id }}">{{ product.prod_name }}</button>
+        {% endfor %}
+    </form>
+</div>
+{% endblock %}

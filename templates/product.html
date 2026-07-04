@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block title %}상품 상세 페이지{% endblock %}
+
+{% block content %}
+<div class="product-detail">
+    <img src="{{ location if location else '/static/image/images.jpg' }}" class="product-image">
+
+
+    <div class="product-info">
+        <h2>{{ name }}</h2>
+        <p class="price">₩{{ price }}</p>
+        <p class="desc">{{ desc }}</p>
+
+        <div class="rating">
+            <span>추천수: {{ recommend_count }}개</span>
+        </div>
+
+        <a href="/cart/add?item=earcleaner" class="buy-btn">장바구니 담기</a>
+    </div>
+</div>
+
+<div class="comments">
+    <h3>상품 리뷰</h3>
+    <form class="comment-form">
+        <input type="text" placeholder="이름 입력" required>
+        <textarea rows="3" placeholder="리뷰를 작성하세요..." required></textarea>
+        <button type="submit">등록</button>
+    </form>
+
+    <ul class="comment-list">
+        <li>
+            <span class="comment-author">홍길동</span>
+            <p class="comment-text">제품이 생각보다 튼튼하고 LED가 밝아서 좋아요!</p>
+        </li>
+        <li>
+            <span class="comment-author">김영희</span>
+            <p class="comment-text">배송도 빠르고 만족합니다. 추천해요~</p>
+        </li>
+    </ul>
+</div>
+{% endblock %}
