@@ -9,10 +9,14 @@
 </head>
 <body>
     <div class="header">
-        <div>
-            <button class="login-btn" onclick="location.href='/login'">로그인</button>
-            <button class="login-btn" onclick="location.href='/signup'">회원가입</button>
-        </div>
+        {% if session.get('user') %}
+            <button class="login-btn" onclick="location.href='/info'">내 정보</button>
+        {% else %}
+            <div>
+                <button class="login-btn" onclick="location.href='/login'">로그인</button>
+                <button class="login-btn" onclick="location.href='/signup'">회원가입</button>
+            </div>
+        {% endif %}
         <h1><a href="/" class="title">쇼핑몰</a></h1>
         {% block title %}{% endblock %}
     </div>
