@@ -26,13 +26,49 @@ def search():
     prod = request.args.get('result')
     results = db.session.execute(
         text("SELECT prod_id FROM product WHERE prod_name LIKE :prod"),
-        {"prod": f"%{prod}%"}   # 여기서 %를 붙여줌
+        {"prod": f"%{prod}%"}
     ).fetchall()
-    return redirect(f'/product/{results[0][0]}')
+
+    if results:
+        return redirect(f'/product/{results[0][0]}')
+    else:
+        return render_template('error.html')
 
 @app.route('/login')
 def login():
     return render_template('login.html')
+
+@app.route('/signup')
+def signup():
+    return render_template('signup.html')
+
+@app.route('/process', methods=['POST'])
+def process():
+    where = request.form.get('where')
+    if where == 'signup':
+        password = request.form.get('password')
+        confirm_password = request.form.get('confirm_password')
+        if password == confirm_password:
+            username = request.form.get('username')
+            email = request.form.get('email')
+            db.session.execute(
+                text("INSERT INTO userinfo (username, passwd, email) VALUES (:username, :password, :email)"),
+                {"username": username, "password": password, "email": email}
+            )
+            db.session.commit()
+            return redirect('/login')
+        else:
+            return redirect('/signup')
+    elif where == 'login':
+        results = db.session.execute(
+            text("SELECT passwd FROM userinfo WHERE username = :username"),
+            {"username": request.form.get('username')}
+        ).fetchall()
+        if results:
+            if results[0][0] != request.form.get('password'):
+                return redirect('/login')
+            else:
+                return redirect('/')
 
 @app.route('/info')
 def info():

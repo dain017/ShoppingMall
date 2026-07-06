@@ -3,32 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}쇼핑몰{% endblock %}</title>
+    <title>쇼핑몰</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 <body>
     <div class="header">
         <div>
-            <button class="login-btn">로그인</button>
-            <button class="login-btn">회원가입</button>
+            <button class="login-btn" onclick="location.href='/login'">로그인</button>
+            <button class="login-btn" onclick="location.href='/signup'">회원가입</button>
         </div>
-        <h1 class="title">쇼핑몰</h1>
+        <h1><a href="/" class="title">쇼핑몰</a></h1>
+        {% block title %}{% endblock %}
     </div>
 
-    <img src="/static/image/a.jpg" alt="광고 이미지">
+    {% block mid %}
 
-    <div class="search">
-        <form action="/search" method="get">
-            <button type="submit" id="su">
-                <span class="material-icons">search</span>
-            </button>
-            <input type="text" id="searchbox" name="result">
-            <button type="reset" id="re">
-                <span class="material-icons">close</span>
-            </button>
-        </form>
-    </div>
+    {% endblock %}
 
     {% block content %}{% endblock %}
 </body>

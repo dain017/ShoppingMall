@@ -1,6 +1,22 @@
 {% extends "base.html" %}
 
-{% block title %}메인 페이지{% endblock %}
+{% block title %}<div>메인페이지</div>{% endblock %}
+
+{% block mid %}
+	<img src="/static/image/a.jpg" alt="광고 이미지">
+
+    <div class="search">
+        <form action="/search" method="get">
+            <button type="submit" id="su">
+                <span class="material-icons">search</span>
+            </button>
+            <input type="text" id="searchbox" name="result">
+            <button type="reset" id="re">
+                <span class="material-icons">close</span>
+            </button>
+        </form>
+    </div>
+{% endblock %}
 
 {% block content %}
 <div>
